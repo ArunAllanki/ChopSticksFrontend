@@ -1,0 +1,56 @@
+.Success-Overlay {
+  background-color: rgb(155, 253, 155);
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 20px;
+  height: 30vh;
+  margin-top: 30vh;
+  font-size: x-large;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  text-align: center;
+}
+
+html {
+  align-items: center;
+}
+
+.Success-Overlay span {
+  color: green;
+}
+
+.HomeButton {
+  background-color: rgb(89, 228, 87);
+  border: 2px black;
+  font-size: x-large;
+  font-weight: bold;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px;
+  height: auto;
+  margin-top: 24px;
+  max-width: 300px;
+}
+
+button:active {
+  opacity: 80%;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#IdNo {
+  color: black;
+  font-weight: bolder;
+}
