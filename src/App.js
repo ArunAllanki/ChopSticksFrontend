@@ -9,6 +9,7 @@ import Success from "./screens/Success";
 const DataContext = createContext();
 
 function App() {
+  document.title = "ChopSticks"
   return (
     <BrowserRouter>
       <Routes>
