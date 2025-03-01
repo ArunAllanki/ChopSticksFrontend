@@ -6,8 +6,7 @@ import Success from "../screens/Success";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart({ selectedItems, clearSelected }) {
-  const backend = "http://localhost:5000";
-  // process.env.REACT_APP_BACKEND_URL;
+  const backend = process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   var Total = 0;
   var [show, setShow] = useState(false);
