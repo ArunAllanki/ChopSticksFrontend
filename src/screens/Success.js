@@ -7,17 +7,19 @@ export default function Success() {
   const location = useLocation();
   const { Id } = location.state || {};
 
-  return (
-    <div className="success">
-      <div className="Success-Overlay">
-        <span>Thank you!</span>
-        <span>Your order has been placed</span>
-        <span>successfully.</span>
-        <span id="IdNo">Order Id : {Id}</span>
+  if (Id) {
+    return (
+      <div className="success">
+        <div className="Success-Overlay">
+          <span>Thank you!</span>
+          <span>Your order has been placed</span>
+          <span>successfully.</span>
+          <span id="IdNo">Order Id : {Id}</span>
+        </div>
+        <button className="HomeButton" onClick={() => navigate("/")}>
+          Go Home
+        </button>
       </div>
-      <button className="HomeButton" onClick={() => navigate("/")}>
-        Go Home
-      </button>
-    </div>
-  );
+    );
+  }
 }

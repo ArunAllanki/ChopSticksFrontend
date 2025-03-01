@@ -29,22 +29,22 @@ export default function Admin() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const OrdersResponse = await fetch(`${backend}/all-orders`);
+      const OrdersResponse = await fetch(`${backend}all-orders`);
       const OrdersResult = await OrdersResponse.json();
       setOrders(OrdersResult);
 
-      const ItemsResponse = await fetch(`${backend}/all-items`);
+      const ItemsResponse = await fetch(`${backend}all-items`);
       const ItemsResult = await ItemsResponse.json();
       setItems(ItemsResult);
       console.log(ItemsResult);
     };
     fetchData();
-  }, [show, showDeleteOverlay, showPauseOverlay, showAddOverlay]);
+  }, []); //showDeleteOverlay, showPauseOverlay, showAddOverlay
 
   const handleComplete = async (id) => {
     try {
       console.log(id);
-      const response = await fetch(`${backend}/complete-order`, {
+      const response = await fetch(`${backend}complete-order`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default function Admin() {
   const Login = async () => {
     try {
       console.log(password);
-      const response = await fetch(`${backend}/Admin/Login`, {
+      const response = await fetch(`${backend}Admin/Login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -257,7 +257,7 @@ export default function Admin() {
     const DeleteItem = async (id) => {
       try {
         console.log(id);
-        const response = await fetch(`${backend}/delete-item`, {
+        const response = await fetch(`${backend}delete-item`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -266,6 +266,10 @@ export default function Admin() {
         });
         const result = await response.json();
         console.log(result);
+        //ReLoad items
+        const ItemsResponse = await fetch(`${backend}all-items`);
+        const ItemsResult = await ItemsResponse.json();
+        setItems(ItemsResult);
       } catch (error) {
         console.log(`Error with completing request : ${error}`);
         throw error;
@@ -276,7 +280,7 @@ export default function Admin() {
     const PauseItem = async (id) => {
       try {
         console.log(id);
-        const response = await fetch(`${backend}/${pauseResume}-item`, {
+        const response = await fetch(`${backend}${pauseResume}-item`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -285,6 +289,11 @@ export default function Admin() {
         });
         const result = await response.json();
         console.log(result);
+
+        //ReLoad items
+        const ItemsResponse = await fetch(`${backend}all-items`);
+        const ItemsResult = await ItemsResponse.json();
+        setItems(ItemsResult);
       } catch (error) {
         console.log(`Error with pausing item : ${error}`);
         throw error;
@@ -338,7 +347,7 @@ export default function Admin() {
         try {
           newItem.price = Number(newItem.price);
           console.log(newItem);
-          const response = await fetch(`${backend}/add-item`, {
+          const response = await fetch(`${backend}add-item`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

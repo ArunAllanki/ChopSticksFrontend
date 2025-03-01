@@ -6,7 +6,8 @@ import Success from "../screens/Success";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart({ selectedItems, clearSelected }) {
-  const backend = process.env.REACT_APP_BACKEND_URL;
+  const backend = "http://localhost:5000";
+  // process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   var Total = 0;
   var [show, setShow] = useState(false);
@@ -26,7 +27,6 @@ export default function Cart({ selectedItems, clearSelected }) {
   };
 
   const handleSubmit = async () => {
-    console.log("user", user);
     const newUserErrors = {};
     if (!/^[a-zA-Z\s]+$/.test(user.name)) {
       newUserErrors.name = "Enter Letters ";
@@ -58,9 +58,7 @@ export default function Cart({ selectedItems, clearSelected }) {
       try {
         var now = new Date();
         var cDate = now.toLocaleDateString();
-        console.log(cDate);
         var cTime = now.toLocaleTimeString();
-        console.log(cTime);
         const response = fetch(`${backend}/send-order`, {
           method: "POST",
           headers: {
@@ -95,6 +93,12 @@ export default function Cart({ selectedItems, clearSelected }) {
       setUserErrors({});
     }
   };
+  var countMap = selectedItems.reduce((acc, item) => {
+    acc[item] = (acc[item] || 0) + 1;
+    return acc;
+  }, {});
+
+  countMap = Object.entries(countMap);
 
   if (selectedItems.length === 0) {
     return null;
@@ -104,7 +108,23 @@ export default function Cart({ selectedItems, clearSelected }) {
         <div className="cart">
           {
             <ul>
-              {selectedItems.map(
+              {countMap.map(
+                (sub) => (
+                  (Total = Total + Number(sub[0].split(",")[2]) * sub[1]),
+                  (
+                    <li key={sub[0]}>
+                      <ul className="cart-item">
+                        <li>
+                          {sub[0].split(",")[1]} ({sub[1]})
+                        </li>
+                        <li>{Number(sub[0].split(",")[2]) * sub[1]}</li>
+                      </ul>
+                    </li>
+                  )
+                )
+              )}
+
+              {/* {selectedItems.map(
                 (subArray) => (
                   (Total = Total + subArray[2]),
                   (
@@ -116,7 +136,7 @@ export default function Cart({ selectedItems, clearSelected }) {
                     </li>
                   )
                 )
-              )}
+              )} */}
             </ul>
           }
 
@@ -156,7 +176,7 @@ export default function Cart({ selectedItems, clearSelected }) {
               <div className="input">
                 <input
                   type="text"
-                  placeholder="Enter mobile number"
+                  placeholder="Enter Mobile Number"
                   value={user.MobileNo}
                   name="MobileNo"
                   onChange={onChange}
@@ -178,7 +198,6 @@ export default function Cart({ selectedItems, clearSelected }) {
           </form>
 
           <div className="totalFare">
-            <hr />
             <button
               className="order-btn"
               onClick={() => {

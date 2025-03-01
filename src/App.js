@@ -6,9 +6,8 @@ import Admin from "./screens/Admin";
 import { createContext } from "react";
 import Success from "./screens/Success";
 
-const DataContext = createContext();
-
 function App() {
+  document.title = "ChopSticks";
   return (
     <BrowserRouter>
       <Routes>
@@ -16,6 +15,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         {/* <Route path="/Login" element={<Login />} /> */}
         <Route path="/Admin" element={<Admin />} />
+        <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
     </BrowserRouter>
   );

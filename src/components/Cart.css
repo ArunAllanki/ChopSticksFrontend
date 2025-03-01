@@ -51,6 +51,7 @@ ul {
   border: 2px black;
   font-size: 1em;
   font-weight: 600;
+  margin-top: 15px;
 
   border-radius: 7px;
 
@@ -75,9 +76,10 @@ button:active {
   margin: 0;
   padding: 0;
   width: auto;
-  font-weight: lighter;
-  font-size: medium;
+  font-weight: bold;
   color: white;
+  font-size: medium;
+  text-align: start;
 }
 
 .inputs input[type="text"] {
