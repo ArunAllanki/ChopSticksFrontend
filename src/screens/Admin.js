@@ -17,7 +17,7 @@ export default function Admin() {
   const [curr, setCurr] = useState("dashboard");
   const [pauseResume, setPauseResume] = useState("pause");
   const [password, setPassword] = useState("");
-  const backend = process.env.REACT_APP_BACKEND_URL;
+  const backend = process.env.REACT_APP_BACKEND_URL+'/';
   const [newItem, setNewItem] = useState({
     name: "",
     price: "",
