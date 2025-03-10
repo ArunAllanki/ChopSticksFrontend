@@ -1,0 +1,335 @@
+/* body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+} */
+
+html {
+  scrollbar-width: none;
+}
+
+.AdminPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+}
+
+.Nav {
+  margin-bottom: 10px;
+  width: 90vw;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 10px;
+  padding: 0;
+  margin: 15px;
+}
+
+.Nav > button {
+  color: rgb(237, 234, 234);
+  /* background-color: brown; */
+  background-image: linear-gradient(brown, rgb(103, 28, 28), black);
+  font-size: large;
+  font-weight: bold;
+  border: None;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: 2px 2px 5px black;
+  width: 45%;
+}
+
+/* .Nav button:focus {
+  color: brown;
+  background-color: rgb(237, 234, 234);
+} */
+
+.hr {
+  height: 3px;
+  background-color: black;
+  margin: 15px;
+  width: 30%;
+  justify-self: center;
+}
+
+h2 {
+  font-weight: bolder;
+  color: brown;
+  font-size: xx-large;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  text-shadow: 3px 3px 3px black;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  display: None; /* Hide overlay by default */
+  justify-items: center;
+  align-content: center;
+  z-index: 1000; /* Make sure overlay appears on top */
+}
+
+.show {
+  display: block;
+}
+
+.overlay-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.overlay-content > h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.overlay-content > h2 {
+  padding: 0px;
+}
+
+.overlay-content button {
+  margin: 0;
+  width: 50%;
+  padding: 10px;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.close-btn {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.366);
+  border: 0;
+  border-bottom-left-radius: 10px;
+}
+
+.ok-btn {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.366);
+  border: 0;
+  border-bottom-right-radius: 10px;
+}
+
+.dash h2 {
+  background-color: white;
+  padding: 4%;
+  border-radius: 15px;
+}
+
+.yellow {
+  color: rgb(255, 179, 0);
+}
+
+.green {
+  color: green;
+}
+
+.toBeCooked {
+  background-color: white;
+  padding: 4%;
+  border-radius: 15px;
+}
+
+.toBeCooked > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.toBeCooked h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.comp-orders {
+  padding: 4% 2% 0% 2%;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.comp-orders > h2 {
+  padding-bottom: 3%;
+}
+
+.add-item {
+  color: rgb(237, 234, 234);
+  /* background-color: brown; */
+  background-image: linear-gradient(brown, rgb(103, 28, 28), black);
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: bold;
+  border: None;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: 2px 2px 5px black;
+  width: 45%;
+  max-width: 300px;
+}
+
+#ItemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 5%;
+  align-items: flex-start;
+}
+
+#EnterName,
+#EnterPrice {
+  width: 90%;
+  padding: 5%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none; /* Remove default outline */
+  border-color: rgba(165, 42, 42, 0.712); /* Change border color when focused */
+  background-color: #fff; /* Change background color when focused */
+}
+
+.Dashboard-inner {
+  height: auto;
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2vh;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.item-error {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-weight: lighter;
+  font-size: medium;
+  color: black;
+}
+
+.Edit-items {
+  margin-bottom: 5vh;
+  /* display: flex;
+  flex-direction: column;
+  text-align: center; */
+}
+
+#Password {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: light;
+  align-items: center;
+  color: brown;
+  text-align: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+#Password h3 {
+  font-weight: 300;
+  color: red;
+  margin: 0;
+  padding: 0;
+  font-size: medium;
+}
+
+#Password input {
+  border-radius: 20px;
+  border: none;
+  font-size: larger;
+  padding: 2%;
+  text-align: center;
+  font-size: medium;
+}
+
+#Login {
+  /* background-color: brown; */
+  background-image: linear-gradient(brown, brown, black);
+  border: none;
+  min-width: 100px;
+  min-height: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  padding: 1%;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+#Logout {
+  border: none;
+  color: brown;
+  font-size: medium;
+  font-weight: bold;
+  max-width: fit-content;
+  border-radius: 7px;
+  margin-top: 3vh;
+  margin-left: 80vw;
+  padding: 1%;
+}
+
+@media (min-width: 650px) {
+  #Logout {
+    position: fixed;
+    top: 1.5vh;
+    right: 1.5vh;
+  }
+}
+
+#clear {
+  background: transparent;
+  padding: 5px 10px;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 80%;
+  border: 2px solid brown;
+  color: brown;
+}
+
+#search {
+  background-color: rgba(255, 255, 255, 0.716);
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  width: 60%;
+  font-weight: bold;
+}

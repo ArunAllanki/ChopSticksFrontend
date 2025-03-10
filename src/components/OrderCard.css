@@ -1,0 +1,108 @@
+.OrderCard {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.OrderCard button {
+  height: 100%;
+}
+
+.top {
+  display: flex;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: aliceblue;
+}
+
+.left {
+  background-color: black;
+  width: 70%;
+  color: rgb(170, 168, 168);
+  border-radius: 10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 0px 10px;
+  height: auto;
+}
+
+.right {
+  width: 30%;
+  align-content: center;
+}
+
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+.bottom {
+  display: flex;
+}
+
+.b-left {
+  width: 70%;
+  padding: 5px 10px 5px 10px;
+}
+
+.b-right {
+  width: 30%;
+  background-color: black;
+  font-size: large;
+  font-weight: bolder;
+  color: azure;
+  align-content: center;
+  border-bottom-right-radius: 10px;
+}
+
+.b-right-inner {
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+  font-size: large;
+  font-weight: bolder;
+  color: azure;
+  align-content: center;
+  border-bottom-right-radius: 10px;
+}
+
+.b-left {
+  font-weight: bolder;
+  background-color: bisque;
+  border-bottom-left-radius: 10px;
+}
+
+.KnowMore {
+  justify-content: end;
+  display: flex;
+}
+
+.more-info {
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+
+.showMore {
+  display: contents;
+}
+
+.hideMore {
+  display: none;
+}

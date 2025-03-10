@@ -1,0 +1,101 @@
+.cart {
+  color: rgb(249, 249, 243);
+  background-image: linear-gradient(brown, black);
+  /* background-color: rgb(62, 57, 57); */
+  box-shadow: 2px -3px 5px black;
+  opacity: 100%;
+  z-index: 20;
+  position: sticky;
+  bottom: 2vh;
+  border-radius: 10px;
+  padding: 3px 10px 5px 10px;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  max-width: 500px;
+}
+
+ul {
+  list-style: None;
+  padding: 0;
+  margin: 3px;
+}
+
+.cart-item {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.totalFare {
+  margin: 0;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-items: end;
+  font-weight: 900;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.totalFare span {
+  text-align: right;
+}
+.order-btn {
+  background-color: rgb(89, 228, 87);
+  border: 2px black;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 15px;
+
+  border-radius: 7px;
+
+  box-shadow: 2px 2px 4px;
+}
+
+button:active {
+  opacity: 80%;
+}
+
+.cancel-btn {
+  background-color: aliceblue;
+  margin-top: 10px;
+  border: 2px black;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px;
+}
+
+.error {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-weight: bold;
+  color: white;
+  font-size: medium;
+  text-align: start;
+}
+
+.inputs input[type="text"] {
+  width: 70%;
+  margin: 1vh 0 1vh 0;
+  padding: 2vh;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.inputs input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(165, 42, 42, 0.712);
+  background-color: #fff;
+}

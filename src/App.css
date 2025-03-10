@@ -1,0 +1,12 @@
+:root {
+  --white: #f5f7f8;
+  --yellow: #f3c623;
+  --orange: #eb8317;
+  --blue: #10375c;
+}
+
+.App {
+  padding: 5px;
+  margin: 0;
+  padding: 0;
+}
