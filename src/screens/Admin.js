@@ -264,7 +264,6 @@ export default function Admin() {
         (order) =>
           `${order.OrderId}`.includes(search) && order.Completed === false
       );
-      console.log(searchedOrders, "Searched Orders ive ra ayya");
 
       return (
         <div className="AdminPage">
