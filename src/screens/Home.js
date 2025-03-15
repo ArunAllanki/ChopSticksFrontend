@@ -10,6 +10,7 @@ export default function Home() {
   const backend = process.env.REACT_APP_BACKEND_URL;
   let [items, setItems] = useState([]);
   let [selected, setSelected] = useState([]);
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,15 +36,47 @@ export default function Home() {
   const clearSelected = () => {
     setSelected([]);
   };
+  console.log(items);
+
+  let filteredItems = [];
+  let all = "active";
+  let veg = "";
+  let nonVeg = "";
+
+  if (filter === "All") {
+    filteredItems = items;
+    veg = "";
+    nonVeg = "";
+  } else if (filter === "Veg") {
+    filteredItems = items.filter((item) => item.veg === true);
+    veg = "active";
+    all = "";
+    nonVeg = "";
+  } else if (filter === "Non-Veg") {
+    filteredItems = items.filter((item) => item.veg === false);
+    veg = "";
+    all = "";
+    nonVeg = "active";
+  }
 
   return (
     <>
       <Splash />
       <div className="home">
         <img id="logo" src={logo}></img>
-        {/* <div className="header"><h1>RCE ChopSticks</h1> </div> */}
         <div className="container">
-          {items.map((item) => (
+          <div className="filters">
+            <button className={all} onClick={() => setFilter("All")}>
+              All
+            </button>
+            <button className={veg} onClick={() => setFilter("Veg")}>
+              Veg
+            </button>
+            <button className={nonVeg} onClick={() => setFilter("Non-Veg")}>
+              Non-Veg
+            </button>
+          </div>
+          {filteredItems.map((item) => (
             <Card
               key={item._id}
               id={item._id}

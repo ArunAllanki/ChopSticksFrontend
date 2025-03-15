@@ -24,8 +24,8 @@ export default function OrderCard({
           <div className="left">
             <div className="items">
               {OrderList.map(
-                (order) => (
-                  <div className="each-item">
+                (order, index) => (
+                  <div className="each-item" key={index}>
                     <span>{order[1]}</span>
                   </div>
                 )
@@ -49,7 +49,6 @@ export default function OrderCard({
             (order) => {
               // console.log(order[2]);
               tFare = tFare + order[2];
-              console.log(tFare);
             }
             // settFare(tFare + order[1])
           )}

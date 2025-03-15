@@ -38,7 +38,6 @@ export default function Admin() {
     const ItemsResponse = await fetch(`${backend}all-items`);
     const ItemsResult = await ItemsResponse.json();
     setItems(ItemsResult);
-    console.log(ItemsResult);
   };
 
   const fetchData = async () => {
@@ -144,10 +143,8 @@ export default function Admin() {
   if (LoggedIn) {
     if (curr === "dashboard") {
       const CompletedOrders = orders.filter((order) => order.Completed == true);
-      console.log("completed", CompletedOrders.length);
 
       const PendingOrders = orders.filter((order) => order.Completed == false);
-      console.log("pending", PendingOrders.length);
 
       const toBeCooked = [];
 
@@ -188,15 +185,17 @@ export default function Admin() {
             </div>
             <div className="toBeCooked">
               <h2>Pending items</h2>
-              {Object.entries(counts).map(([key, value]) => (
-                <div key={key}>
-                  <h3>{key}</h3>
-                  <h3>{value}</h3>
-                </div>
-              ))}
+              {Object.entries(counts).length > 0 ? (
+                Object.entries(counts).map(([key, value]) => (
+                  <div key={key}>
+                    <h3>{key}</h3>
+                    <h3>{value}</h3>
+                  </div>
+                ))
+              ) : (
+                <h3>No pending items</h3>
+              )}
             </div>
-            {console.log(CompletedOrders)}
-            {console.log(orders)}
             <div className="comp-orders">
               <h2>Completed orders</h2>
               <button
@@ -259,7 +258,6 @@ export default function Admin() {
       const handleSearchChange = (e) => {
         setSearch(e.target.value);
       };
-      console.log(search, "searchhhhh");
       searchedOrders = orders.filter(
         (order) =>
           `${order.OrderId}`.includes(search) && order.Completed === false
@@ -272,16 +270,16 @@ export default function Admin() {
             <button onClick={() => setCurr("editMenu")}>Edit Menu</button>
           </div>
           <h1>Orders</h1>
-          <input
-            type="search"
-            id="search"
-            value={search}
-            autoComplete="off"
-            placeholder="Search"
-            onChange={() => handleSearchChange(event)}
-          />
 
           <div className="Dashboard-inner">
+            <input
+              type="search"
+              id="search"
+              value={search}
+              autoComplete="off"
+              placeholder="Search"
+              onChange={(e) => handleSearchChange(e)}
+            />
             <div className="Orders">
               {search.length != 0 ? (
                 searchedOrders.length > 0 ? (
@@ -301,9 +299,10 @@ export default function Admin() {
                     />
                   ))
                 ) : (
-                  <h3>No search found</h3>
+                  <h3>No search result found</h3>
                 )
-              ) : (
+              ) : orders.filter((order) => order.Completed === false).length >
+                0 ? (
                 orders.map((order) => (
                   <OrderCard
                     key={order._id}
@@ -319,6 +318,8 @@ export default function Admin() {
                     getId={IdFromChild}
                   />
                 ))
+              ) : (
+                <h3>No active orders found</h3>
               )}
             </div>
 
@@ -480,7 +481,7 @@ export default function Admin() {
       setNewItem((prevData) => ({
         ...prevData,
         [e.target.name]:
-          e.target.type == "checkbox" ? e.target.checked : e.target.value,
+          e.target.type === "checkbox" ? e.target.checked : e.target.value,
       }));
     };
 

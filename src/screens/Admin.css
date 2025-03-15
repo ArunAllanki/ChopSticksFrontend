@@ -302,6 +302,7 @@ input[type="text"]:focus {
   margin-top: 3vh;
   margin-left: 80vw;
   padding: 1%;
+  box-shadow: 0 0 10px grey;
 }
 
 @media (min-width: 650px) {
@@ -322,14 +323,16 @@ input[type="text"]:focus {
   margin-left: 80%;
   border: 2px solid brown;
   color: brown;
+  box-shadow: 0 0 5px grey;
 }
 
 #search {
   background-color: rgba(255, 255, 255, 0.716);
   border: none;
-  margin-bottom: 10px;
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   border-radius: 20px;
   width: 60%;
   font-weight: bold;
+  margin: auto;
+  margin-top: 10px;
 }
