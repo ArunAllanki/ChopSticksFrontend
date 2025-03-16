@@ -52,7 +52,6 @@ export default function Admin() {
   }, [LoggedIn]); //showDeleteOverlay, showPauseOverlay, showAddOverlay
   const handleComplete = async (id) => {
     try {
-      console.log(id);
       const response = await fetch(`${backend}complete-order`, {
         method: "PATCH",
         headers: {
@@ -61,10 +60,8 @@ export default function Admin() {
         body: JSON.stringify({ Id: id }),
       });
       const result = await response.json();
-      console.log(result);
       fetchOrders();
     } catch (error) {
-      console.log(`Error with completing request : ${error}`);
       throw error;
     }
     setShow("");
@@ -80,7 +77,6 @@ export default function Admin() {
 
   const Login = async () => {
     try {
-      console.log(password);
       const response = await fetch(`${backend}Admin/Login`, {
         method: "POST",
         headers: {
@@ -89,7 +85,6 @@ export default function Admin() {
         body: JSON.stringify({ attempted: password }),
       });
       const result = await response.json();
-      console.log(result);
       if (result == "true") {
         setPassword("");
         localStorage.setItem("password", true);
@@ -99,7 +94,6 @@ export default function Admin() {
           "Entered Incorrect password";
       }
     } catch (error) {
-      console.log(`Error while loggin in : ${error}`);
       throw error;
     }
   };
@@ -123,7 +117,6 @@ export default function Admin() {
 
   const handleClear = async () => {
     try {
-      console.log(id);
       const response = await fetch(`${backend}clear-comps`, {
         method: "DELETE",
         headers: {
@@ -131,11 +124,9 @@ export default function Admin() {
         },
       });
       const result = await response.json();
-      console.log(result);
       //ReLoad items
       fetchOrders();
     } catch (error) {
-      console.log(`Error while clearing completed orders : ${error}`);
     }
     setShowClearOvelray("");
   };
@@ -360,7 +351,6 @@ export default function Admin() {
 
     const DeleteItem = async (id) => {
       try {
-        console.log(id);
         const response = await fetch(`${backend}delete-item`, {
           method: "DELETE",
           headers: {
@@ -369,11 +359,9 @@ export default function Admin() {
           body: JSON.stringify({ Id: id }),
         });
         const result = await response.json();
-        console.log(result);
         //ReLoad items
         fetchItems();
       } catch (error) {
-        console.log(`Error with completing request : ${error}`);
         throw error;
       }
       setShowDeleteOverlay("");
@@ -381,7 +369,6 @@ export default function Admin() {
 
     const PauseItem = async (id) => {
       try {
-        console.log(id);
         const response = await fetch(`${backend}${pauseResume}-item`, {
           method: "PATCH",
           headers: {
@@ -390,12 +377,10 @@ export default function Admin() {
           body: JSON.stringify({ Id: id }),
         });
         const result = await response.json();
-        console.log(result);
 
         //ReLoad items
         fetchItems();
       } catch (error) {
-        console.log(`Error with pausing item : ${error}`);
         throw error;
       }
       setShowPauseOverlay("");
@@ -437,7 +422,6 @@ export default function Admin() {
       }
 
       setErrors(newErrors);
-      console.log(errors);
 
       if (
         Object.keys(errors).length == 0 &&
@@ -446,7 +430,6 @@ export default function Admin() {
       ) {
         try {
           newItem.price = Number(newItem.price);
-          console.log(newItem);
           const response = await fetch(`${backend}add-item`, {
             method: "POST",
             headers: {
@@ -460,10 +443,8 @@ export default function Admin() {
             }),
           });
           const result = await response.json();
-          console.log(result);
           fetchItems();
         } catch (error) {
-          console.log(`Error with adding item : ${error}`);
           throw error;
         }
         setShowAddOverlay("");
@@ -493,7 +474,6 @@ export default function Admin() {
             <button onClick={() => setCurr("dashboard")}>Dashboard</button>
           </div>
           <h1>Edit Menu</h1>
-          {console.log(items)}
 
           <button
             className="add-item"

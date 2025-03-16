@@ -26,6 +26,8 @@ export default function Cart({ selectedItems, clearSelected }) {
   };
 
   const handleSubmit = async () => {
+    navigate("/success");
+
     const newUserErrors = {};
     if (!/^[a-zA-Z\s]+$/.test(user.name)) {
       newUserErrors.name = "Enter Letters ";
@@ -46,7 +48,6 @@ export default function Cart({ selectedItems, clearSelected }) {
     }
 
     setUserErrors(newUserErrors);
-    console.log("userErros", userErrors);
 
     if (
       Object.keys(userErrors).length == 0 &&
@@ -74,19 +75,15 @@ export default function Cart({ selectedItems, clearSelected }) {
         });
 
         const Res = await response;
-        console.log(Res);
         const data = await Res.json();
-        console.log(data.ID);
         if (Res.ok === true) {
           navigate("/success", { state: { Id: data.ID } });
-          console.log("Order created Successfully:", Response);
         }
 
         if (!Res.ok) {
           throw new Error("Response is not ok");
         }
       } catch (error) {
-        console.log("Error while placing order:", error);
       }
       setShow(true);
       setUserErrors({});

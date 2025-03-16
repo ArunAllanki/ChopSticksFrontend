@@ -1,6 +1,7 @@
 import React from "react";
 import "./Success.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ClockLoader } from "react-spinners";
 
 export default function Success() {
   const navigate = useNavigate();
@@ -19,6 +20,14 @@ export default function Success() {
         <button className="HomeButton" onClick={() => navigate("/")}>
           Go Home
         </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="loader">
+        <ClockLoader color="white" />
+        <p>Hold on...</p>
+        <p>Your order is getting placed</p>
       </div>
     );
   }

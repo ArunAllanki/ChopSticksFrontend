@@ -17,26 +17,22 @@ export default function Home() {
       const response = await fetch(`${backend}/all-items`);
       const result = await response.json();
       setItems(result);
-      console.log(items);
     };
 
     fetchData();
   }, []);
 
   const handleSelect = async (id, name, price) => {
-    console.log(`clicked card of id ${id}`);
     // await selected.push(id);
     const newItem = [id, name, price];
     // await selected.push(newItem);
 
     await setSelected((selected) => [...selected, newItem]);
-    console.log(selected);
   };
 
   const clearSelected = () => {
     setSelected([]);
   };
-  console.log(items);
 
   let filteredItems = [];
   let all = "active";
